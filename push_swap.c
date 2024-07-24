@@ -6,54 +6,100 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:20:15 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/11 12:01:14 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/24 09:55:32 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int stack_init(t_push_swap **a, char **argv, int flag)
-{
-	long	nbr;
-	int		i;
 
-	i = 0;
-	while (argv[i])
-	{
-		if (bad_sysntax(argv[i]))
-			error_free(a, argv, flag);
-		nbr = ft_atol(argv[i]);
-		if (nbr > 2147483647 || nbr < -2147483648)
-			error_free(a, argv, flag);
-		if (found_repetition(*a, (int)nbr))
-			error_free(a, argv, flag);
-		put_node(a, (int)nbr);
-		i++;
-	}
-	if (flag)
-		big_free(argv);
+static void rotate_both(t_push_swap **a,
+						t_push_swap **b,
+						t_push_swap *cheapest)
+{
+	while (*a != cheapest->target
+			&& *b !=cheapest)
+			rr(a, b, FALSE);
+	set_current(*a);
+	set_current(*b);
 }
 
-int main (int argc, char **argv) 
+static void reverse_rotate_both(t_push_swap **a,
+						t_push_swap **b,
+						t_push_swap *cheapest)
 {
-	t_push_swap	*a;
-	t_push_swap	*b;
+	while (*a != cheapest->target
+			&& *b !=cheapest)
+			rrr(a, b, FALSE);
+	set_current(*a);
+	set_current(*b);
+}
 
-	a = '\0';
-	b = '\0';
-	if (1 == argc || (2 == argc && !argv[1][0]))
-		return(1);
-	else if (2 == argc)
-		argv = ft_split(argv[1], 32);
-	stack_init(&a, argv =1, 2 == argc);
-	if (not_sorted(a))
+void	finnish(t_push_swap **stack,
+				t_push_swap *top_node,
+				char stack_name)
+{
+	while (*stack != top_node)
 	{
-		if (len_of(a) == 2)
-			sa(&a, FALSE);
-		else if (len_of(a) == 3)
-			tiny_sort(&a);
-		else
-			push_swap(&a, &b);
+		if (stack_name == 'a')
+		{
+			if (top_node->above_median)
+				ra(stack, FALSE);
+			else
+				rra(stack, FALSE);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->above_median)
+				rb(stack, FALSE);
+			else
+				rrb(stack, FALSE);
+		}
 	}
-	free_stack(&a);
+		
+}
+
+static void move_nodes(t_push_swap **a, t_push_swap **b)
+{
+	t_push_swap *cheapest;
+
+	cheapest = return_cheapest(*b);
+	if (cheapest->above_median
+		&& cheapest->target->above_median)
+		rotate_both(a, b, cheapest);
+	else if (!(cheapest->above_median)
+		&& !(cheapest->target->above_median))
+		reverse_rotate_both(a, b, cheapest);
+	finnish(b, cheapest, 'b');
+	finnish(a, cheapest->target, 'a');
+	pa(a, b, FALSE);		
+}
+
+void push_swap(t_push_swap **a, t_push_swap **b)
+{
+	t_push_swap	*smallest;
+	int			len_a;
+	
+	len_a = len_of(*a);
+	if (len_a == 5)
+		handle_small(a, b);
+	else
+	{
+		while (len_a-- > 3)
+			pb(b, a, FALSE);
+	}
+	tiny_sort(a);
+	while (*b)
+	{
+		init_nodes(*a, *b);
+		move_nodes(a, b);
+	}
+	set_current(*a);
+	smallest = find_smallest(*a);
+	if (smallest->above_median)
+		while (*a != smallest)
+			ra(a, FALSE);
+	else
+		while (*a != smallest)
+			rra(a, FALSE);
 }
