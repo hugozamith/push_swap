@@ -6,31 +6,30 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:20:15 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/24 09:55:32 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:58:06 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-static void rotate_both(t_push_swap **a,
+static void	rotate_both(t_push_swap **a,
 						t_push_swap **b,
 						t_push_swap *cheapest)
 {
 	while (*a != cheapest->target
-			&& *b !=cheapest)
-			rr(a, b, FALSE);
+		&& *b != cheapest)
+		rr(a, b, FALSE);
 	set_current(*a);
 	set_current(*b);
 }
 
-static void reverse_rotate_both(t_push_swap **a,
+static void	reverse_rotate_both(t_push_swap **a,
 						t_push_swap **b,
 						t_push_swap *cheapest)
 {
 	while (*a != cheapest->target
-			&& *b !=cheapest)
-			rrr(a, b, FALSE);
+		&& *b != cheapest)
+		rrr(a, b, FALSE);
 	set_current(*a);
 	set_current(*b);
 }
@@ -56,12 +55,11 @@ void	finnish(t_push_swap **stack,
 				rrb(stack, FALSE);
 		}
 	}
-		
 }
 
-static void move_nodes(t_push_swap **a, t_push_swap **b)
+static void	move_nodes(t_push_swap **a, t_push_swap **b)
 {
-	t_push_swap *cheapest;
+	t_push_swap	*cheapest;
 
 	cheapest = return_cheapest(*b);
 	if (cheapest->above_median
@@ -72,14 +70,14 @@ static void move_nodes(t_push_swap **a, t_push_swap **b)
 		reverse_rotate_both(a, b, cheapest);
 	finnish(b, cheapest, 'b');
 	finnish(a, cheapest->target, 'a');
-	pa(a, b, FALSE);		
+	pa(a, b, FALSE);
 }
 
-void push_swap(t_push_swap **a, t_push_swap **b)
+void	push_swap(t_push_swap **a, t_push_swap **b)
 {
 	t_push_swap	*smallest;
 	int			len_a;
-	
+
 	len_a = len_of(*a);
 	if (len_a == 5)
 		handle_small(a, b);

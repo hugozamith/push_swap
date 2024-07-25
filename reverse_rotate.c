@@ -6,7 +6,7 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:30:31 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/20 17:39:10 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:39:31 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	reverse_rotate(t_push_swap **stack)
 {
-	t_push_swap	*last;
+	t_push_swap		*last;
 	int				len;
 
-	len = len_of	(*stack);
+	len = len_of(*stack);
 	if (NULL == *stack || NULL == stack || 1 == len)
 		return ;
 	last = find_last_node(*stack);

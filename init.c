@@ -6,26 +6,26 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:34:14 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/22 17:50:27 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:40:47 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long ft_atol(const char *str)
+static long	ft_atol(const char *str)
 {
 	long	nbl;
 	int		isneg;
 	int		i;
-	
+
 	nbl = 0;
 	isneg = 1;
 	i = 0;
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'
 			|| str[i] == '\n' || str[i] == '\r'
 			|| str[i] == '\v' || str[i] == '\f'))
-			i++;
-	if(str[i] == '+')
+		i++;
+	if (str[i] == '+')
 		i++;
 	else if (str[i] == '-')
 	{

@@ -6,34 +6,11 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:09:15 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/20 18:59:13 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:28:26 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (*str++)
-		i++;
-	return (i);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t n)
-{
-	size_t	src_len;
-
-	src_len = ft_strlen(src);
-	if (NULL == dst || NULL == src || !n)
-		return (src_len);
-	while (*src && --n)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (src_len);
-}
 
 size_t	ft_slicecount(char const *pao, char n)
 {
@@ -80,7 +57,7 @@ int	ft_fill(char **ret, char const *s, char c)
 	int		palavra;
 	size_t	len;
 
-	palavra = 0;
+	palavra = 1;
 	while (*s)
 	{
 		len = 0;
@@ -110,11 +87,15 @@ char	**ft_split(char const *s, char c)
 	if (!(s))
 		return (NULL);
 	palavras = 0;
-	palavras = (ft_slicecount(s, c));
+	palavras = (ft_slicecount(s, c)) + 1;
 	ret = malloc((palavras + 1) * sizeof(char *));
 	if (!(ret))
 		return (NULL);
-	ret[palavras] = (NULL);
+	ret[0] = malloc(1 * sizeof(char));
+	if (!(ret[0]))
+		return (NULL);
+	ret[0][0] = '\0';
+	ret[palavras] = NULL;
 	if (!(ft_fill(ret, s, c)))
 		return (NULL);
 	return (ret);

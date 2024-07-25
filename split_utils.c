@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   split_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 15:12:37 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/25 12:42:19 by hteixeir         ###   ########.fr       */
+/*   Created: 2024/07/25 11:26:13 by hteixeir          #+#    #+#             */
+/*   Updated: 2024/07/25 12:41:23 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *str)
 {
-	t_push_swap	*a;
-	t_push_swap	*b;
+	size_t	i;
 
-	a = '\0';
-	b = '\0';
-	if (1 == argc || (2 == argc && !argv[1][0]))
-		return (1);
-	else if (2 == argc)
-		argv = ft_split(argv[1], ' ');
-	stack_init(&a, argv + 1, 2 == argc);
-	if (!stack_sorted(a))
-	{
-		if (len_of(a) == 2)
-			sa(&a, FALSE);
-		else if (len_of(a) == 3)
-			tiny_sort(&a);
-		else
-			push_swap(&a, &b);
-	}
-	big_free(&a);
+	i = 0;
+	while (*str++)
+		i++;
+	return (i);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
+{
+	size_t	src_len;
+
+	src_len = ft_strlen(src);
+	if (NULL == dst || NULL == src || !n)
+		return (src_len);
+	while (*src && --n)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (src_len);
 }

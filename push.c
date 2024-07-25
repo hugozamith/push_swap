@@ -6,16 +6,16 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:51:49 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/20 18:33:37 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:21:26 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void push(t_push_swap **dest, t_push_swap **src)
+static void	push(t_push_swap **dest, t_push_swap **src)
 {
 	t_push_swap	*to_push;
-	
+
 	if (NULL == *src)
 		return ;
 	to_push = *src;

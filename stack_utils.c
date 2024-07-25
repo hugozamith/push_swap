@@ -6,13 +6,13 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:51:49 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/20 18:01:03 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:14:57 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push_swap *find_last_node (t_push_swap * last_node)
+t_push_swap	*find_last_node(t_push_swap *last_node)
 {
 	if (NULL == last_node)
 		return (NULL);
@@ -21,10 +21,10 @@ t_push_swap *find_last_node (t_push_swap * last_node)
 	return (last_node);
 }
 
-void put_node (t_push_swap **stack, int nbr)
+void	put_node(t_push_swap **stack, int nbr)
 {
 	t_push_swap	*node;
-	t_push_swap *last_node;
+	t_push_swap	*last_node;
 
 	if (NULL == stack)
 		return ;
@@ -47,7 +47,7 @@ void put_node (t_push_swap **stack, int nbr)
 t_push_swap	*find_smallest(t_push_swap *stack)
 {
 	long			smallest;
-	t_push_swap	*smallest_node;
+	t_push_swap		*smallest_node;
 
 	if (NULL == stack)
 		return (NULL);

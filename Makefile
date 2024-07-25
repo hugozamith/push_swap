@@ -6,7 +6,7 @@
 #    By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 15:18:53 by hteixeir          #+#    #+#              #
-#    Updated: 2024/07/22 15:43:33 by hteixeir         ###   ########.fr        #
+#    Updated: 2024/07/25 11:11:51 by hteixeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,18 @@ fclean: clean
 
 # Regra para recompilar o projeto do zero
 re: fclean all
+
+download:
+	@wget https://cdn.intra.42.fr/document/document/25705/checker_linux && chmod 777 checker_linux
+
+visualizer:
+	git clone https://github.com/o-reo/push_swap_visualizer.git && \
+	cd push_swap_visualizer && \
+	mkdir build && \
+	cd build && \
+	cmake .. && \
+	make && \
+	./bin/visualizer
 
 # Indica que essas regras não são arquivos
 .PHONY: all clean fclean re

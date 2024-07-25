@@ -6,13 +6,13 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 15:18:53 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/20 18:37:40 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:38:35 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void set_current(t_push_swap *stack)
+void	set_current(t_push_swap *stack)
 {
 	int	i;
 	int	centerline;
@@ -33,7 +33,7 @@ void set_current(t_push_swap *stack)
 	}
 }
 
-static void get_target(t_push_swap *a, t_push_swap *b)
+static void	get_target(t_push_swap *a, t_push_swap *b)
 {
 	t_push_swap		*current_a;
 	t_push_swap		*target;
@@ -64,7 +64,7 @@ static void get_target(t_push_swap *a, t_push_swap *b)
 void	set_cheapest(t_push_swap *b)
 {
 	long			best_match_value;
-	t_push_swap	*best_match_node;
+	t_push_swap		*best_match_node;
 
 	if (NULL == b)
 		return ;
@@ -80,6 +80,7 @@ void	set_cheapest(t_push_swap *b)
 	}
 	best_match_node->cheapest = TRUE;
 }
+
 void	set_price(t_push_swap *a, t_push_swap *b)
 {
 	int	al;
@@ -89,7 +90,7 @@ void	set_price(t_push_swap *a, t_push_swap *b)
 	bl = len_of(b);
 	while (b)
 	{
-		b->cost = b->current = b->current;
+		b->cost = b->current;
 		if (!(b->above_median))
 			b->cost = bl - (b->current);
 		if (b->target->above_median)

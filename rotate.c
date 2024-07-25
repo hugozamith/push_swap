@@ -6,7 +6,7 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 10:07:07 by utente            #+#    #+#             */
-/*   Updated: 2024/07/20 17:39:39 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:20:49 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	rotate(t_push_swap **stack)
 {
 	t_push_swap	*last_node;
-	int				len;
+	int			len;
 
 	len = len_of(*stack);
 	if (NULL == stack || NULL == *stack || 1 == len)
@@ -26,7 +26,7 @@ static void	rotate(t_push_swap **stack)
 	(*stack)->prev = NULL;
 	last_node->next->prev = last_node;
 	last_node->next->next = NULL;
-}	
+}
 
 void	ra(t_push_swap **a, int problem)
 {

@@ -6,15 +6,15 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:51:49 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/22 16:37:22 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:22:00 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void swap(t_push_swap **head)
+static void	swap(t_push_swap **head)
 {
-	int len;
+	int	len;
 
 	len = len_of(*head);
 	if (NULL == *head || NULL == head || 1 == len)
