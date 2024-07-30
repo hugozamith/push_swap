@@ -6,7 +6,7 @@
 /*   By: hteixeir <hteixeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:51:49 by hteixeir          #+#    #+#             */
-/*   Updated: 2024/07/25 12:11:12 by hteixeir         ###   ########.fr       */
+/*   Updated: 2024/07/30 10:03:15 by hteixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_push_swap
 {
 	int					value;
 	int					current;
-	int					final;
 	int					cost;
 	int					above_median;
 	int					cheapest;
